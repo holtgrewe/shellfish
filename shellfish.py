@@ -49,9 +49,11 @@ class Template(object):
         self.capture_stdout = capture_stdout
         self.capture_stderr = capture_stderr
 
-    def run(self):
+    def run(self, **more_values):
         """Run the command and return the resulting ProcessResult."""
-        cmd = self.cmd.format(**self.values)
+        values = dict(self.values)
+        values.update(more_values)
+        cmd = self.cmd.format(**values)
         if self.debug:
             cmd = 'set -x\n' + cmd
 

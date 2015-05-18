@@ -8,5 +8,4 @@ tpl = shellfish.Template(r"""
               | grep <(echo {pattern})
           """)
 tpl.debug = True
-tpl.values = {'pattern': 'man'}
-tpl.run()
+tpl.run(pattern='man')
